@@ -48,9 +48,15 @@ const Login = () => {
   }
 
   return (
-    <main className="flex h-screen w-screen flex-col items-center justify-center gap-5">
+    <main className="flex h-screen w-screen flex-col items-center justify-center gap-3">
       <div className="relative h-16 w-full">
-        <Image priority src="/logo.svg" fill alt="Logo" />
+        <Image
+          priority
+          src="/logo.svg"
+          fill
+          alt="Logo"
+          onContextMenu={(e) => e.preventDefault()}
+        />
       </div>
 
       <Card className="w-[350px]">
