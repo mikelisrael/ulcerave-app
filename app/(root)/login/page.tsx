@@ -59,7 +59,7 @@ const Login = () => {
         />
       </div>
 
-      <Card className="w-[350px]">
+      <Card className="w-[360px]">
         <CardHeader>
           <CardTitle>Login</CardTitle>
           <CardDescription>
@@ -68,7 +68,7 @@ const Login = () => {
         </CardHeader>
         <CardContent>
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
               <FormField
                 control={form.control}
                 name="email"
@@ -97,9 +97,7 @@ const Login = () => {
                 )}
               />
 
-              <Button className="!mt-5" type="submit">
-                Submit
-              </Button>
+              <Button type="submit">Submit</Button>
             </form>
           </Form>
         </CardContent>
