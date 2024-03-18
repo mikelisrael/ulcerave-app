@@ -1,30 +1,21 @@
-import type { Metadata } from "next";
-import { Fredoka, Inter, Poppins } from "next/font/google";
 import "./globals.css";
+import Providers from "@/components/providers";
 
-const inter = Inter({ subsets: ["latin"] });
-
-const fredoka = Fredoka({ subsets: ["latin"] });
-
-const poppins = Poppins({
-  weight: ["400", "500", "600", "700"],
-  subsets: ["latin"],
-});
-
-export const metadata: Metadata = {
-  title: "Ulcerave",
-  description:
-    "Ulcerave is a web app for managing your gastric ulcer patients.",
+export const metadata = {
+  title: "Ulcerave | Manage ulcer patients with ease.",
+  description: "Ulcerave is a platform for managing ulcer patients with ease.",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body className={poppins.className}>{children}</body>
+      <body>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
