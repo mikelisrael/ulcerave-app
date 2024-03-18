@@ -22,7 +22,6 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
-import Head from "next/head";
 
 const formSchema = z.object({
   email: z.string().email({
@@ -50,9 +49,7 @@ const Login = () => {
 
   return (
     <>
-      <Head>
-        <title>Ulcerave Login</title>
-      </Head>
+      <title>Ulcerave Login</title>
 
       <main className="flex h-screen w-screen flex-col items-center justify-center gap-3">
         <div className="relative h-16 w-full">
