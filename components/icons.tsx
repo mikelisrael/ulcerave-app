@@ -29,6 +29,7 @@ import {
   User2Icon,
   UserX2Icon,
   X,
+  UserRoundSearch,
 } from "lucide-react";
 
 export type Icon = LucideIcon;
@@ -44,7 +45,7 @@ export const Icons = {
   chevronLeft: ChevronLeft,
   chevronRight: ChevronRight,
   trash: Trash,
-  employee: UserX2Icon,
+  employee: UserRoundSearch,
   post: FileText,
   page: File,
   media: Image,
