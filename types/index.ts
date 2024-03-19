@@ -30,3 +30,11 @@ export interface FooterItem {
 export type MainNavItem = NavItemWithOptionalChildren;
 
 export type SidebarNavItem = NavItemWithChildren;
+
+// type FormResponseData can be {success: string} or {error: string}
+export type FormResponseData = {
+  error?: boolean;
+  success?: boolean;
+  message: string;
+  redirectUri?: string;
+};
