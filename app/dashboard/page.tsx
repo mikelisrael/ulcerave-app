@@ -49,7 +49,7 @@ export default function page() {
             <CardHeader>
               <CardTitle>Overview</CardTitle>
             </CardHeader>
-            <CardContent className="pl-2">
+            <CardContent className="pl-0 pr-2 sm:pl-2">
               <Overview />
             </CardContent>
           </Card>

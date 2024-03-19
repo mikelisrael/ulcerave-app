@@ -1,5 +1,5 @@
-import Header from "@/components/dashboard/header";
-import Sidebar from "@/components/dashboard/sidebar";
+import Header from "@/components/layout/header";
+import Sidebar from "@/components/layout/sidebar";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import type { Metadata } from "next";
 
