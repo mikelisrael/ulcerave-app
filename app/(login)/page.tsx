@@ -1,9 +1,6 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-
+import FormResponse from "@/components/layout/form-response";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -21,31 +18,57 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { loginSchema } from "@/schemas/loginSchema";
+import { FormResponseData } from "@/types";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { signIn } from "next-auth/react";
 import Image from "next/image";
-
-const formSchema = z.object({
-  email: z.string().email({
-    message: "Invalid email address.",
-  }),
-  password: z.string().min(6, {
-    message: "Password must be at least 6 characters long.",
-  }),
-});
+import { useState, useTransition } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
 const Login = () => {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const [isPending, startTransition] = useTransition();
+  const [formResponse, setFormResponse] = useState<FormResponseData | null>(
+    null,
+  );
+
+  const form = useForm<z.infer<typeof loginSchema>>({
+    resolver: zodResolver(loginSchema),
     defaultValues: {
       email: "",
       password: "",
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
-  }
+  const onSubmit = async (values: z.infer<typeof loginSchema>) => {
+    startTransition(async () => {
+      try {
+        const data = await signIn("credentials", {
+          email: values.email,
+          password: values.password,
+          callbackUrl: `${window.location.origin}/dashboard`,
+        });
+
+        if (data && data.error) {
+          setFormResponse({
+            error: true,
+            message: "Invalid email or password. Please try again.",
+          });
+          return;
+        }
+
+        setFormResponse({ success: true, message: "Logged in successfully!" });
+      } catch (error) {
+        setFormResponse({
+          error: true,
+          message: "An error occurred. Please try again later.",
+        });
+      }
+    });
+  };
+
+  const isDisabled = isPending || formResponse?.success;
 
   return (
     <>
@@ -82,7 +105,11 @@ const Login = () => {
                     <FormItem>
                       <FormLabel>Email</FormLabel>
                       <FormControl>
-                        <Input placeholder="example@gmail.com" {...field} />
+                        <Input
+                          placeholder="example@gmail.com"
+                          disabled={isDisabled}
+                          {...field}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -100,6 +127,7 @@ const Login = () => {
                           placeholder="•••••••"
                           type="password"
                           {...field}
+                          disabled={isDisabled}
                         />
                       </FormControl>
                       <FormMessage />
@@ -107,7 +135,16 @@ const Login = () => {
                   )}
                 />
 
-                <Button type="submit">Submit</Button>
+                {formResponse && (
+                  <FormResponse
+                    type={formResponse.error ? "error" : "success"}
+                    message={formResponse.message}
+                  />
+                )}
+
+                <Button type="submit" disabled={isDisabled}>
+                  Submit
+                </Button>
               </form>
             </Form>
           </CardContent>
