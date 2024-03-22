@@ -1,7 +1,10 @@
-// import BreadCrumb from "@/components/breadcrumb";
 import BreadCrumbDisplay from "@/components/layout/BreadCrumb";
 import { UserClient } from "@/components/tables/patient-tables/client";
 import { patients } from "@/constants/data";
+
+export const metadata = {
+  title: "Patients | Ulcerave",
+};
 
 export default function PatientsPage() {
   return (
