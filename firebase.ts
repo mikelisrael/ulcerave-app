@@ -7,12 +7,12 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  apiKey: "AIzaSyDejeLwpWlUSn8vXSCIHERz8Bo6m-RpMqo",
+  authDomain: "ulcerave-1d907.firebaseapp.com",
+  projectId: "ulcerave-1d907",
+  storageBucket: "ulcerave-1d907.appspot.com",
+  messagingSenderId: "664783899872",
+  appId: "1:664783899872:web:9f1630be2ecd33bae89485",
 };
 
 // Initialize Firebase
