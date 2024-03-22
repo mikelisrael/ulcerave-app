@@ -43,7 +43,7 @@ export function RecentAppointments() {
             </p>
             <p className="text-sm text-muted-foreground">{appointment.email}</p>
           </div>
-          <div className="ml-auto font-medium capitalize">
+          <div className="ml-auto">
             <Badge
               variant={
                 appointment.status === "scheduled" ? "scheduled" : "completed"
