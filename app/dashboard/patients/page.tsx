@@ -1,6 +1,6 @@
 // import BreadCrumb from "@/components/breadcrumb";
 import BreadCrumbDisplay from "@/components/layout/BreadCrumb";
-import { UserClient } from "@/components/tables/user-tables/client";
+import { UserClient } from "@/components/tables/patient-tables/client";
 import { patients } from "@/constants/data";
 
 export default function PatientsPage() {
