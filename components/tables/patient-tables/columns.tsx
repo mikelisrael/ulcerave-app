@@ -38,8 +38,12 @@ export const columns: ColumnDef<Patient>[] = [
     header: "GENDER",
   },
   {
+    accessorKey: "age",
+    header: "AGE",
+  },
+  {
     accessorKey: "status",
-    header: "ADMITTED STATUS",
+    header: "APPOINTMENT",
     cell: ({ row }) => {
       const status = row.getValue("status") as string;
 
