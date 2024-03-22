@@ -16,13 +16,45 @@ interface DashboardNavProps {
 export function DashboardNav({ items, setOpen }: DashboardNavProps) {
   const path = usePathname();
 
+  // Function to determine if a route is active
+  const isActive = (href: string) => {
+    // if item href is "/dashboard"
+    if (href === "/dashboard") {
+      return path === href;
+    }
+
+    return path === href || path.startsWith(href + "/");
+  };
+
   if (!items?.length) {
     return null;
   }
 
+  const DashboardIcon = Icons[items[0].icon || "arrowRight"];
+
   return (
     <nav className="grid items-start gap-2">
-      {items.map((item, index) => {
+      {items[0].href && (
+        <Link
+          href={items[0].href}
+          onClick={() => {
+            if (setOpen) setOpen(false);
+          }}
+        >
+          <span
+            className={cn(
+              "group flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground",
+              isActive(items[0].href) ? "bg-accent" : "transparent",
+              items[0].disabled && "cursor-not-allowed opacity-80",
+            )}
+          >
+            <DashboardIcon className="mr-2 h-4 w-4" />
+            <span>{items[0].title}</span>
+          </span>
+        </Link>
+      )}
+
+      {items.slice(1).map((item, index) => {
         const Icon = Icons[item.icon || "arrowRight"];
         return (
           item.href && (
@@ -36,7 +68,7 @@ export function DashboardNav({ items, setOpen }: DashboardNavProps) {
               <span
                 className={cn(
                   "group flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground",
-                  path === item.href ? "bg-accent" : "transparent",
+                  isActive(item.href) ? "bg-accent" : "transparent",
                   item.disabled && "cursor-not-allowed opacity-80",
                 )}
               >

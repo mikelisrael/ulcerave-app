@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import React from "react";
 
 const BreadCrumbDisplay = () => {
   const pathname = usePathname();
@@ -26,30 +27,30 @@ const BreadCrumbDisplay = () => {
         {paths.map((path, index) => {
           accumulatedPath += `/${path}`;
           return (
-            <>
+            <React.Fragment key={index}>
               {index !== paths.length - 1 ? (
-                <>
+                <React.Fragment key={index}>
                   {index === 0 ? (
-                    <BreadcrumbItem>
+                    <BreadcrumbItem key={index}>
                       <BreadcrumbLink asChild>
                         <Link href="/dashboard">Home</Link>
                       </BreadcrumbLink>
                     </BreadcrumbItem>
                   ) : (
-                    <BreadcrumbItem>
+                    <BreadcrumbItem key={index}>
                       <BreadcrumbLink asChild>
                         <Link href={accumulatedPath}>{cleanPath(path)}</Link>
                       </BreadcrumbLink>
                     </BreadcrumbItem>
                   )}
-                  <BreadcrumbSeparator />
-                </>
+                  <BreadcrumbSeparator key={`${index}-separator`} />
+                </React.Fragment>
               ) : (
-                <BreadcrumbItem>
+                <BreadcrumbItem key={index}>
                   <BreadcrumbPage>{cleanPath(path)}</BreadcrumbPage>
                 </BreadcrumbItem>
               )}
-            </>
+            </React.Fragment>
           );
         })}
       </BreadcrumbList>
