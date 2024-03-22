@@ -6,6 +6,7 @@ export type Patient = {
   gender: "Male" | "Female";
   verified: boolean;
   status: string;
+  age: number;
 };
 
 export const patients: Patient[] = [
@@ -15,6 +16,7 @@ export const patients: Patient[] = [
     gender: "Female",
     verified: false,
     status: "completed",
+    age: 35,
   },
   {
     id: "#DEF456",
@@ -22,6 +24,7 @@ export const patients: Patient[] = [
     gender: "Male",
     verified: true,
     status: "scheduled",
+    age: 42,
   },
   {
     id: "#GHI789",
@@ -29,6 +32,7 @@ export const patients: Patient[] = [
     gender: "Female",
     verified: true,
     status: "completed",
+    age: 28,
   },
   {
     id: "#JKL012",
@@ -36,6 +40,7 @@ export const patients: Patient[] = [
     gender: "Male",
     verified: false,
     status: "scheduled",
+    age: 50,
   },
   {
     id: "#MNO345",
@@ -43,6 +48,7 @@ export const patients: Patient[] = [
     gender: "Female",
     verified: true,
     status: "completed",
+    age: 31,
   },
   {
     id: "#PQR678",
@@ -50,6 +56,7 @@ export const patients: Patient[] = [
     gender: "Male",
     verified: false,
     status: "scheduled",
+    age: 37,
   },
   {
     id: "#STU901",
@@ -57,6 +64,7 @@ export const patients: Patient[] = [
     gender: "Female",
     verified: true,
     status: "completed",
+    age: 45,
   },
   {
     id: "#VWX234",
@@ -64,6 +72,7 @@ export const patients: Patient[] = [
     gender: "Male",
     verified: false,
     status: "scheduled",
+    age: 29,
   },
   {
     id: "#YZA567",
@@ -71,6 +80,7 @@ export const patients: Patient[] = [
     gender: "Female",
     verified: true,
     status: "completed",
+    age: 33,
   },
   {
     id: "#BCD890",
@@ -78,6 +88,7 @@ export const patients: Patient[] = [
     gender: "Male",
     verified: false,
     status: "scheduled",
+    age: 39,
   },
 ];
 
