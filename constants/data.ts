@@ -1,94 +1,83 @@
-import { Icons } from "@/components/icons";
-import { NavItem, SidebarNavItem } from "@/types";
+import { NavItem } from "@/types";
 
-export type User = {
-  id: number;
+export type Patient = {
+  id: string;
   name: string;
-  company: string;
-  role: string;
+  gender: "Male" | "Female";
   verified: boolean;
   status: string;
 };
-export const users: User[] = [
+
+export const patients: Patient[] = [
   {
-    id: 1,
+    id: "#ABC123",
     name: "Candice Schiner",
-    company: "Dell",
-    role: "Frontend Developer",
+    gender: "Female",
     verified: false,
-    status: "Active",
+    status: "completed",
   },
   {
-    id: 2,
+    id: "#DEF456",
     name: "John Doe",
-    company: "TechCorp",
-    role: "Backend Developer",
+    gender: "Male",
     verified: true,
-    status: "Active",
+    status: "scheduled",
   },
   {
-    id: 3,
+    id: "#GHI789",
     name: "Alice Johnson",
-    company: "WebTech",
-    role: "UI Designer",
+    gender: "Female",
     verified: true,
-    status: "Active",
+    status: "completed",
   },
   {
-    id: 4,
+    id: "#JKL012",
     name: "David Smith",
-    company: "Innovate Inc.",
-    role: "Fullstack Developer",
+    gender: "Male",
     verified: false,
-    status: "Inactive",
+    status: "scheduled",
   },
   {
-    id: 5,
+    id: "#MNO345",
     name: "Emma Wilson",
-    company: "TechGuru",
-    role: "Product Manager",
+    gender: "Female",
     verified: true,
-    status: "Active",
+    status: "completed",
   },
   {
-    id: 6,
+    id: "#PQR678",
     name: "James Brown",
-    company: "CodeGenius",
-    role: "QA Engineer",
+    gender: "Male",
     verified: false,
-    status: "Active",
+    status: "scheduled",
   },
   {
-    id: 7,
+    id: "#STU901",
     name: "Laura White",
-    company: "SoftWorks",
-    role: "UX Designer",
+    gender: "Female",
     verified: true,
-    status: "Active",
+    status: "completed",
   },
   {
-    id: 8,
+    id: "#VWX234",
     name: "Michael Lee",
-    company: "DevCraft",
-    role: "DevOps Engineer",
+    gender: "Male",
     verified: false,
-    status: "Active",
+    status: "scheduled",
   },
   {
-    id: 9,
+    id: "#YZA567",
     name: "Olivia Green",
-    company: "WebSolutions",
-    role: "Frontend Developer",
+    gender: "Female",
     verified: true,
-    status: "Active",
+    status: "completed",
   },
   {
-    id: 10,
+    id: "#BCD890",
     name: "Robert Taylor",
-    company: "DataTech",
-    role: "Data Analyst",
+    gender: "Male",
     verified: false,
-    status: "Active",
+    status: "scheduled",
   },
 ];
 
@@ -125,17 +114,17 @@ export const navItems: NavItem[] = [
     label: "patients",
   },
   {
-    title: "Employee",
-    href: "/dashboard/employee",
+    title: "Employees",
+    href: "/dashboard/employees",
     icon: "employee",
-    label: "employee",
+    label: "employees",
   },
-  {
-    title: "Profile",
-    href: "/dashboard/profile",
-    icon: "profile",
-    label: "profile",
-  },
+  // {
+  //   title: "Profile",
+  //   href: "/dashboard/profile",
+  //   icon: "profile",
+  //   label: "profile",
+  // },
   // {
   //   title: "Kanban",
   //   href: "/dashboard/kanban",
