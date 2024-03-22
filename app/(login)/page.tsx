@@ -23,6 +23,7 @@ import { FormResponseData } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signIn } from "next-auth/react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -32,6 +33,7 @@ const Login = () => {
   const [formResponse, setFormResponse] = useState<FormResponseData | null>(
     null,
   );
+  const router = useRouter();
 
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
@@ -45,6 +47,7 @@ const Login = () => {
     startTransition(async () => {
       try {
         const data = await signIn("credentials", {
+          redirect: false,
           email: values.email,
           password: values.password,
           callbackUrl: `${window.location.origin}/dashboard`,
@@ -58,7 +61,15 @@ const Login = () => {
           return;
         }
 
-        setFormResponse({ success: true, message: "Logged in successfully!" });
+        // successful login
+        if (data && data.url) {
+          setFormResponse({
+            success: true,
+            message: "Logged in successfully!",
+          });
+          // redirect to the dashboard
+          router.replace(data.url);
+        }
       } catch (error) {
         setFormResponse({
           error: true,
