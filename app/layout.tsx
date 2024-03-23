@@ -1,5 +1,6 @@
 import "./globals.css";
 import Providers from "@/components/providers";
+import { Toaster } from "@/components/ui/sonner";
 import { getServerSession } from "next-auth";
 
 export const metadata = {
@@ -17,7 +18,10 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Providers session={session}>{children}</Providers>
+        <Providers session={session}>
+          {children}
+          <Toaster richColors />
+        </Providers>
       </body>
     </html>
   );

@@ -8,6 +8,7 @@ const authOptions: AuthOptions = {
   pages: {
     signIn: "/", // sign in page is the root
   },
+  // secret: process.env.NEXT_PUBLIC_SECRET,
   providers: [
     CredentialsProvider({
       name: "Credentials",
